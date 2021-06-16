@@ -1,0 +1,1 @@
+-intstyle "ise" -incremental -lib "unisims_ver" -lib "unimacro_ver" -lib "xilinxcorelib_ver" -lib "secureip" -o "/csehome/alsichcan/Documents/Final/simulation1_isim_beh.exe" -prj "/csehome/alsichcan/Documents/Final/simulation1_beh.prj" "work.simulation1" "work.glbl" 
