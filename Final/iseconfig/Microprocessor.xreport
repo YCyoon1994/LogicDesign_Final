@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <report-views version="2.0" >
  <header>
-  <DateModified>2021-06-17T16:19:53</DateModified>
+  <DateModified>2021-06-17T20:19:45</DateModified>
   <ModuleName>Microprocessor</ModuleName>
   <SummaryTimeStamp>Unknown</SummaryTimeStamp>
-  <SavedFilePath>D:/Dev/LogicDesign_Final/Final/iseconfig/Microprocessor.xreport</SavedFilePath>
-  <ImplementationReportsDirectory>D:/Dev/LogicDesign_Final/Final\</ImplementationReportsDirectory>
+  <SavedFilePath>C:/Users/Owner/Downloads/final_project_2021/Final_pp/LogicDesign_Final/Final/iseconfig/Microprocessor.xreport</SavedFilePath>
+  <ImplementationReportsDirectory>C:/Users/Owner/Downloads/final_project_2021/Final_pp/LogicDesign_Final/Final\</ImplementationReportsDirectory>
   <DateInitialized>2021-06-17T00:30:02</DateInitialized>
   <EnableMessageFiltering>false</EnableMessageFiltering>
  </header>
