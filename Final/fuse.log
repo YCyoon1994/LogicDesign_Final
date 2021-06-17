@@ -32,4 +32,4 @@ Waiting for 1 sub-compilation(s) to finish...
 Compiled 11 Verilog Units
 Built simulation executable D:/Dev/LogicDesign_Final/Final/simulation1_isim_beh.exe
 Fuse Memory Usage: 27740 KB
-Fuse CPU Usage: 467 ms
+Fuse CPU Usage: 437 ms

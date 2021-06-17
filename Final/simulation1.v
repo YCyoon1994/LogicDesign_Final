@@ -66,12 +66,20 @@ module simulation1;
 		CLK = 0;
 		RST = 0;
 
-      repeat(100) begin
+      repeat(18) begin
+			#10;
+			CLK = ~CLK;
+		end
+
+		RST = 1;
+		
+		repeat(3) begin
 			#10;
 			CLK = ~CLK;
 		end
 		
-		RST = 1;
+		RST = 0;
+		
 		// Add stimulus here
       repeat(10000) begin
 			#10;

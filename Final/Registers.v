@@ -44,10 +44,13 @@ module Registers(
 	
 	always @ (posedge CLK or posedge RST) begin
 		if(RST) begin
-			REGISTER[0] <= 8'b00000000;
-			REGISTER[1] <= 8'b00000000;
-			REGISTER[2] <= 8'b00000000;
-			REGISTER[3] <= 8'b00000000;
+			REGISTER[0] <= 8'd0;
+			REGISTER[1] <= 8'd0;
+			REGISTER[2] <= 8'd0;
+			REGISTER[3] <= 8'd0;
+			READ_DATA_ONE <= 8'd0;
+			READ_DATA_TWO <= 8'd0;
+			IMM <= 2'b00;
 		end
 		else begin
 		
