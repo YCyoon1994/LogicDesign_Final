@@ -64,13 +64,19 @@ module simulation1;
 	initial begin
 		// Initialize Inputs
 		CLK = 0;
+		RST = 0;
 
-      repeat(1000000) begin
+      repeat(100) begin
 			#10;
 			CLK = ~CLK;
 		end
+		
+		RST = 1;
 		// Add stimulus here
-
+      repeat(10000) begin
+			#10;
+			CLK = ~CLK;
+		end
 	end
       
 endmodule

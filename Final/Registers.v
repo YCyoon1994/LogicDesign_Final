@@ -29,7 +29,8 @@ module Registers(
 	input [7:0] REG_WRITE_DATA,
 	
 	output reg [7:0] READ_DATA_ONE,
-	output reg [7:0] READ_DATA_TWO
+	output reg [7:0] READ_DATA_TWO,
+	output reg [1:0] IMM
     );
 	 
 	reg [7:0] REGISTER[3:0];
@@ -52,6 +53,7 @@ module Registers(
 		
    		READ_DATA_ONE <= REGISTER[REG_SOURCE];
 			READ_DATA_TWO <= REGISTER[REG_TWO];
+			IMM <= REG_DEST;
 
 		end
 	end

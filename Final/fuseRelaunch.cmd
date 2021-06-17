@@ -1,1 +1,1 @@
--intstyle "ise" -incremental -lib "unisims_ver" -lib "unimacro_ver" -lib "xilinxcorelib_ver" -lib "secureip" -o "C:/dev/Final/simulation1_isim_beh.exe" -prj "C:/dev/Final/simulation1_beh.prj" "work.simulation1" "work.glbl" 
+-intstyle "ise" -incremental -lib "unisims_ver" -lib "unimacro_ver" -lib "xilinxcorelib_ver" -lib "secureip" -o "D:/Dev/LogicDesign_Final/Final/simulation1_isim_beh.exe" -prj "D:/Dev/LogicDesign_Final/Final/simulation1_beh.prj" "work.simulation1" "work.glbl" 
