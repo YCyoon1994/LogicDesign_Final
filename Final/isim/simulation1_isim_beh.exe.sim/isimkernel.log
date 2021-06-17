@@ -2,9 +2,9 @@ Command line:
    simulation1_isim_beh.exe
      -simmode  gui
      -simrunnum  0
-     -socket  12419
+     -socket  6221
 
-Thu Jun 17 16:15:14 2021
+Thu Jun 17 16:20:17 2021
 
 
- Elaboration Time: 0.109375 sec
+ Elaboration Time: 0.0625 sec

@@ -32,7 +32,7 @@ module Program_Counter(
 	end
   
 
-	always @ (posedge CLK or posedge RST) begin
+	always @ (negedge CLK or posedge RST) begin
 		if(RST) begin
 			ADDR <= 8'd0;
 		end
