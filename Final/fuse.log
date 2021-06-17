@@ -1,0 +1,35 @@
+Running: C:\Xilinx\14.7\ISE_DS\ISE\bin\nt64\unwrapped\fuse.exe -intstyle ise -incremental -lib unisims_ver -lib unimacro_ver -lib xilinxcorelib_ver -lib secureip -o C:/dev/Final/simulation1_isim_beh.exe -prj C:/dev/Final/simulation1_beh.prj work.simulation1 work.glbl 
+ISim P.20131013 (signature 0x7708f090)
+Number of CPUs detected in this system: 8
+Turning on mult-threading, number of parallel sub-compilation jobs: 16 
+Determining compilation order of HDL files
+Analyzing Verilog file "C:/dev/Final/Registers.v" into library work
+Analyzing Verilog file "C:/dev/Final/Program_Counter.v" into library work
+Analyzing Verilog file "C:/dev/Final/Frequency_Divider.v" into library work
+Analyzing Verilog file "C:/dev/Final/Data_Memory.v" into library work
+Analyzing Verilog file "C:/dev/Final/Controller.v" into library work
+Analyzing Verilog file "C:/dev/Final/BCD7Segment.v" into library work
+Analyzing Verilog file "C:/dev/Final/ALU.v" into library work
+Analyzing Verilog file "C:/dev/Final/Microprocessor.v" into library work
+Analyzing Verilog file "C:/dev/Final/IMEM.v" into library work
+Analyzing Verilog file "C:/dev/Final/simulation1.v" into library work
+Analyzing Verilog file "C:/Xilinx/14.7/ISE_DS/ISE//verilog/src/glbl.v" into library work
+Starting static elaboration
+Completed static elaboration
+Compiling module Frequency_Divider
+Compiling module Controller
+Compiling module Program_Counter
+Compiling module Registers
+Compiling module ALU
+Compiling module Data_Memory
+Compiling module BCD7Segment
+Compiling module Microprocessor
+Compiling module IMEM
+Compiling module simulation1
+Compiling module glbl
+Time Resolution for simulation is 1ps.
+Waiting for 1 sub-compilation(s) to finish...
+Compiled 11 Verilog Units
+Built simulation executable C:/dev/Final/simulation1_isim_beh.exe
+Fuse Memory Usage: 27664 KB
+Fuse CPU Usage: 514 ms

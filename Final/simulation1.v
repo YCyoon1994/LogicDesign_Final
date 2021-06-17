@@ -32,6 +32,8 @@ module simulation1;
 	wire [7:0] REG_WRITE_DATA;
 	wire [7:0] SIGNAL;
 	wire [7:0] READ_DATA;
+	wire [7:0] REG_READ_ONE;
+	wire [7:0] REG_READ_TWO;
 	
 	// Outputs
 	wire [7:0] PC;
@@ -48,6 +50,8 @@ module simulation1;
 		.DIS2(DIS2),
 		.ALU_OUTPUT(ALU_OUTPUT),
 		.REG_WRITE_DATA(REG_WRITE_DATA),
+		.REG_READ_ONE(REG_READ_ONE),
+		.REG_READ_TWO(REG_READ_TWO),
 		.SIGNAL(SIGNAL),
 		.READ_DATA(READ_DATA)
 	);
@@ -60,14 +64,7 @@ module simulation1;
 	initial begin
 		// Initialize Inputs
 		CLK = 0;
-		RST = 1;
-		// Wait 100 ns for global reset to finish
-		#100;
-		repeat(10) begin
-			#10;
-			CLK = ~CLK;
-		end
-		RST = 0;
+
       repeat(1000000) begin
 			#10;
 			CLK = ~CLK;

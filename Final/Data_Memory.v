@@ -43,7 +43,7 @@ module Data_Memory(
 	end
 	
 	
-	always @ (posedge RST or ADDRESS) begin
+	always @ (posedge RST or negedge CLK) begin
 		if (RST) begin
 			// initialize memory
 			READ_DATA <= 0;

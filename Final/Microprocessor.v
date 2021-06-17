@@ -29,7 +29,9 @@ module Microprocessor(
 	 output [7:0] SIGNAL,
 	 output [7:0] ALU_OUTPUT,
 	 output [7:0] REG_WRITE_DATA,
-	 output [7:0] READ_DATA
+	 output [7:0] READ_DATA,
+	 output [7:0] REG_READ_ONE,
+	 output [7:0] REG_READ_TWO
     );
 
   // wire [7:0] SIGNAL;
@@ -37,17 +39,17 @@ module Microprocessor(
   
   // wire [7:0] REG_WRITE_DATA;
   
-  wire [7:0] REG_READ_ONE;
-  wire [7:0] REG_READ_TWO;
+  //wire [7:0] REG_READ_ONE;
+  //wire [7:0] REG_READ_TWO;
   //wire [7:0] ALU_OUTPUT;
   
   //wire [7:0] READ_DATA;
  
-  
+  assign REG_WRITE_DATA = (SIGNAL[1] == 1'b1) ? READ_DATA : ALU_OUTPUT;
 
   Frequency_Divider FD1 (.CLK(CLK),.RST(RST),.CLKOUT(REAL_CLK));
   
-  Controller CTRL (.INSTR(INSTR[7:6]), .SIGNAL(SIGNAL));
+  Controller CTRL (.CLK(CLK), .INSTR(INSTR[7:6]), .SIGNAL(SIGNAL));
   
   // clk => real_clk
   Program_Counter PC1 (.CLK(CLK), .RST(RST), .JMP(SIGNAL[4]), .JMP_OFFSET(INSTR[1:0]), .ADDR(PC));
@@ -58,9 +60,6 @@ module Microprocessor(
   ALU ALU (.ALUSRC(SIGNAL[5]), .ALUOP(SIGNAL[0]), .IN1(REG_READ_ONE), .IN2(REG_READ_TWO), .IN3(INSTR[1:0]), .OUT(ALU_OUTPUT));
   // clk => real_clk
   Data_Memory DM(.CLK(CLK), .RST(RST), .MEMREAD(SIGNAL[3]), .MEMWRITE(SIGNAL[2]), .ADDRESS(ALU_OUTPUT),.WRITE_DATA(REG_READ_TWO), .READ_DATA(READ_DATA));
-	
-	
-  assign REG_WRITE_DATA = (SIGNAL[1] == 1'b1) ? READ_DATA : ALU_OUTPUT;
   
   BCD7Segment BCD1 (.inp({1'b0, REG_WRITE_DATA[3:0]}), .out(DIS1));
   BCD7Segment BCD2 (.inp({1'b0, REG_WRITE_DATA[7:4]}), .out(DIS2)); 

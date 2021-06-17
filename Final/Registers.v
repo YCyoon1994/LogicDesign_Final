@@ -33,13 +33,12 @@ module Registers(
     );
 	 
 	reg [7:0] REGISTER[3:0];
-	reg [1:0] REG_WRITE;
+	
 	initial begin
 		REGISTER[0] <= 8'b00000000;
 		REGISTER[1] <= 8'b00000000;
 		REGISTER[2] <= 8'b00000000;
 		REGISTER[3] <= 8'b00000000;
-		REG_WRITE <= 2'd00;
 	end
 	
 	always @ (posedge CLK or posedge RST) begin
@@ -50,19 +49,21 @@ module Registers(
 			REGISTER[3] <= 8'b00000000;
 		end
 		else begin
+		
+   		READ_DATA_ONE <= REGISTER[REG_SOURCE];
+			READ_DATA_TWO <= REGISTER[REG_TWO];
+
+		end
+	end
+	
+	always @ (REG_WRITE_DATA) begin
+		if(REGWRITE) begin
 			if(REGDST) begin
-				REG_WRITE = REG_DEST;
+				REGISTER[REG_DEST] <= REG_WRITE_DATA;
 			end
 			else begin
-				REG_WRITE = REG_TWO;
+				REGISTER[REG_TWO] <= REG_WRITE_DATA;
 			end
-
-			if(REGWRITE) begin
-				REGISTER[REG_WRITE] = REG_WRITE_DATA; 
-			end	
-			
-			READ_DATA_ONE <= REGISTER[REG_SOURCE];
-			READ_DATA_TWO <= REGISTER[REG_TWO];
 		end
 	end
 endmodule

@@ -27,8 +27,9 @@ module ALU(
     output [7:0] OUT
     );
 
-	assign OUT = ALUSRC == 1'b0 ? IN1+IN2 : 
-					 ((IN3 == 2'b00) ? IN1 : 
-					 ((IN3 == 2'b01) ? IN1 + 8'b00000001 : 
-					 ((IN3 == 2'b10) ? IN1 - 8'b00000010 : IN1 - 8'b00000001 )));
+	assign OUT = (ALUSRC == 1'b0) ? IN1+IN2 : 
+					 (IN3 == 2'b00) ? IN1 : 
+					 (IN3 == 2'b01) ? IN1 + 8'b00000001 : 
+					 (IN3 == 2'b10) ? IN1 - 8'b00000010 :
+					 IN1 - 8'b00000001;
 endmodule
