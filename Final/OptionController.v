@@ -34,7 +34,12 @@ module OptionController(
     );
 	
 	wire [7:0] ADDER;
+	wire [3:0] BCD_PC [2:0];
+	wire [3:0] BCD_REG [2:0];
+	
 	assign ADDER = ~REG_WRITE_DATA + 1'b1;
+	BCDConversion bcd1(.Binary(PC), .Hundreds(BCD_PC[2]), .Tens(BCD_PC[1]), .Ones(BCD_PC[0]));
+	BCDConversion bcd2(.Binary(REG_WRITE_DATA), .Hundreds(BCD_REG[2]), .Tens(BCD_REG[1]), .Ones(BCD_REG[0]));
 	initial begin
 		OUT1 <= 5'b10000;
 		OUT2 <= 5'b10000;
@@ -111,28 +116,82 @@ module OptionController(
 					end
 					3'b100 : begin
 						// normal / 2's complement / Decimal
-						if(REG_WRITE_DATA[3:0] > 4'b1001) begin
-							OUT1 <= {1'b0, (REG_WRITE_DATA[3:0] - 4'b1010)};
-						end
-						else begin
-							OUT1 <= {1'b0, (REG_WRITE_DATA[3:0])};
-						end
-						
+						OUT1 <= {1'b0, BCD_REG[0]};
+						OUT2 <= {1'b0, BCD_REG[1]};
+						OUT3 <= {1'b0, BCD_REG[2]};
+						OUT4 <= 5'b10000;
+						OUT5 <= 5'b10000;
+						OUT6 <= 5'b10000;
 					end
 					3'b101 : begin
 						// PC / 2's complement / Decimal
+						OUT1 <= {1'b0, BCD_PC[0]};
+						OUT2 <= {1'b0, BCD_PC[1]};
+						OUT3 <= {1'b0, BCD_PC[2]};
+						OUT4 <= 5'b10000;
+						OUT5 <= 5'b10000;
+						OUT6 <= 5'b10000;
+					end
+					3'b110 : begin
+						// normal / Normal / Decimal
+						if (~REG_WRITE_DATA[7]) begin
+							OUT1 <= {1'b0, BCD_REG[0]};
+							OUT2 <= {1'b0, BCD_REG[1]};
+							OUT3 <= {1'b0, BCD_REG[2]};
+							OUT4 <= 5'b10000;
+							OUT5 <= 5'b10000;
+							OUT6 <= 5'b10000;
+						end
+						else begin
+							OUT1 <= {1'b0, BCD_REG[0]};
+							OUT2 <= {1'b0, BCD_REG[1]};
+							OUT3 <= {1'b0, BCD_REG[2]};
+							OUT4 <= 5'b10001;
+							OUT5 <= 5'b10000;
+							OUT6 <= 5'b10000;
+						end
+					end
+					3'b111 : begin
+						// PC / Normal / Decimal
+						OUT1 <= {1'b0, BCD_PC[0]};
+						OUT2 <= {1'b0, BCD_PC[1]};
+						OUT3 <= {1'b0, BCD_PC[2]};
+						OUT4 <= 5'b10000;
+						OUT5 <= 5'b10000;
+						OUT6 <= 5'b10000;
 					end
 				endcase
 			// if only display at regwrite
 		   // block start
 			end
 			else begin
+				// JUMP
+				if(SIGNAL[4]) begin
+					OUT1 <= 5'b10000;
+					OUT2 <= 5'b10110;
+					OUT3 <= 5'b10111;
+					OUT4 <= 5'b11000;
+					OUT5 <= 5'b11001;
+					OUT6 <= 5'b10000;
+				end
+				// SAVE
+				if(SIGNAL[2]) begin
+					OUT1 <= 5'b10000;
+					OUT2 <= 5'b11010;
+					OUT3 <= 5'b10100;
+					OUT4 <= 5'b11011;
+					OUT5 <= 5'b11101;
+					OUT6 <= 5'b10000;
+				end
+				/*
+				// ----
 				OUT1 <= 5'b10001;
 				OUT2 <= 5'b10001;
 				OUT3 <= 5'b10001;
 				OUT4 <= 5'b10001;
 				OUT5 <= 5'b10001;
 				OUT6 <= 5'b10001;
+				*/
 			end
 			// block end
 		end
